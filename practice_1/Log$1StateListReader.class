@@ -1,0 +1,59 @@
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ class StateListReader
+/*    */   implements Runnable
+/*    */ {
+/*    */   public State[] states;
+/*    */   
+/*    */   public void run() {
+/* 50 */     this.states = new State[Log.this.stateList.getSize()];
+/* 51 */     Log.this.stateList.copyInto((Object[])this.states);
+/*    */   }
+/*    */ }
+
+
+/* Location:              C:\Users\knutv\Downloads\PPool.jar!\Log$1StateListReader.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */

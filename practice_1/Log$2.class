@@ -1,0 +1,49 @@
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ class null
+/*    */   implements Runnable
+/*    */ {
+/*    */   public void run() {
+/* 40 */     if (((State)Log.this.stateList.lastElement()).get(x) != n)
+/* 41 */       Log.this.stateList.addElement(new State(Log.this.stateList.lastElement(), x, n)); 
+/*    */   }
+/*    */ }
+
+
+/* Location:              C:\Users\knutv\Downloads\PPool.jar!\Log$2.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */
