@@ -1,9 +1,49 @@
-// CSD feb 2015 Juansa Sendra
+public class Pool3 extends Pool {
 
-public class Pool3 extends Pool{ //max capacity
-    public void init(int ki, int cap)           {}
-    public void kidSwims()      {log.swimming();}
-    public void kidRests()      {log.resting(); }
-    public void instructorSwims()   {log.swimming();}
-    public void instructorRests()   {log.resting(); }
+    public static int instructors_swimming = 0;
+    public static int kids_swimming = 0;
+    public int max_kids_per_instructor = -1;
+    public int max_swimmers = -1;
+
+    public void init(int ki, int cap) {
+        max_kids_per_instructor = log.nk / log.ni;
+        max_swimmers = (log.nk + log.ni) / 2;
+    }
+
+    public synchronized void kidSwims() throws InterruptedException {
+        while (instructors_swimming == 0
+                || ((kids_swimming+1) > (max_kids_per_instructor * instructors_swimming))
+                || ((kids_swimming+instructors_swimming+1) > max_swimmers)) {
+            log.waitingToSwim();
+            wait();
+        }
+        kids_swimming++;
+        log.swimming();
+    }
+
+    public synchronized void kidRests() throws InterruptedException {
+        kids_swimming--;
+        log.resting();
+        notifyAll();
+    }
+
+    public synchronized void instructorSwims() throws InterruptedException {
+        while ((kids_swimming+instructors_swimming+1) > max_swimmers) {
+            log.waitingToSwim();
+            wait();
+        }
+        instructors_swimming++;
+        log.swimming();
+        notifyAll();
+    }
+
+    public synchronized void instructorRests() throws InterruptedException {
+        while ((instructors_swimming == 1 && kids_swimming >= 1)
+                || (kids_swimming > (max_kids_per_instructor * (instructors_swimming-1)))) {
+            log.waitingToRest();
+            wait();
+        }
+        instructors_swimming--;
+        log.resting();
+    }
 }
