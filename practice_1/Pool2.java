@@ -2,7 +2,7 @@ public class Pool2 extends Pool {
 
     public static int instructors_swimming = 0;
     public static int kids_swimming = 0;
-    public int max_kids_per_instructor = 0;
+    public static int max_kids_per_instructor = 0;
 
     public void init(int ki, int cap) {
         max_kids_per_instructor = log.nk / log.ni;
@@ -18,16 +18,18 @@ public class Pool2 extends Pool {
         log.swimming();
     }
 
-    public synchronized void kidRests() throws InterruptedException {
+    public synchronized void kidRests() {
         kids_swimming--;
         log.resting();
         notifyAll();
+        //notify();
     }
 
-    public synchronized void instructorSwims() throws InterruptedException {
+    public synchronized void instructorSwims() {
         instructors_swimming++;
         log.swimming();
         notifyAll();
+        //notify();
     }
 
     public synchronized void instructorRests() throws InterruptedException {

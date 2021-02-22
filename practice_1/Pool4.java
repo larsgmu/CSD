@@ -19,12 +19,11 @@ public class Pool4 extends Pool {
             log.waitingToSwim();
             wait();
         }
-        System.out.format("Instructors waiting to rest: %d \n", instructors_waiting_to_rest);
         kids_swimming++;
         log.swimming();
     }
 
-    public synchronized void kidRests() throws InterruptedException {
+    public synchronized void kidRests() {
         kids_swimming--;
         log.resting();
         notifyAll();
@@ -46,11 +45,9 @@ public class Pool4 extends Pool {
             instructors_waiting_to_rest++;
             log.waitingToRest();
             wait();
-        }
-        log.resting();
-        instructors_swimming--;
-        if (instructors_waiting_to_rest > 0) {
             instructors_waiting_to_rest--;
         }
+        instructors_swimming--;
+        log.resting();
     }
 }

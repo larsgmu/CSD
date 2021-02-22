@@ -21,7 +21,7 @@ public class Pool3 extends Pool {
         log.swimming();
     }
 
-    public synchronized void kidRests() throws InterruptedException {
+    public synchronized void kidRests() {
         kids_swimming--;
         log.resting();
         notifyAll();

@@ -1,7 +1,4 @@
-// CSD feb 2015 Juansa Sendra
-
-
-public class Pool1 extends Pool {   //no kids alone
+public class Pool1 extends Pool {
     public static int instructors_swimming = 0;
     public static int kids_swimming = 0;
 
@@ -17,21 +14,18 @@ public class Pool1 extends Pool {   //no kids alone
         log.swimming();
     }
 
-    public synchronized void kidRests() throws InterruptedException {
+    public synchronized void kidRests() {
         kids_swimming--;
         log.resting();
-
-        //notify instructors wanting to rest;
         notifyAll();
+        //notify();
     }
 
-    public synchronized void instructorSwims() throws InterruptedException {
+    public synchronized void instructorSwims() {
         instructors_swimming++;
         log.swimming();
-
-        //notify kids wanting to swim
-        //notify instructors wanting to rest
         notifyAll();
+        //notify();
     }
 
     public synchronized void instructorRests() throws InterruptedException {
